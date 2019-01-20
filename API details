@@ -1,0 +1,288 @@
+API Details:
+1 . Have to create a registration form having first name, last
+name, email, company name, license start date and
+license end date.
+URL
+http://localhost:3000/api/user_registrations
+Method
+Post
+URL Params
+N/A
+Data Parms
+ { 
+ "firstName":"Rupesh1",
+  "lastName": "sharma",
+  "email":"rupeshkumars95+3@gmail.com",
+  "phone":"8009138821",
+  "companyName": "ABC",
+  "password": "65465dlkjndjknkdn",
+  "licenseStartDate": "2018-12-07 12:47:17",
+  "licenseEndDate":"2018-12-07 12:47:17",
+  "role":"2"              “1 for admin and 2 for company”
+  }
+Success Response
+{
+    "data": {
+        "token": "Jloyds eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE1NDgwMTA5Mzk3MzAsIlVzZXJzIjp7ImNvbXBhbnlfbGljZW5zZSI6MiwiX2lkIjoiNWM0NGM1YjhjMWUxZmUwN2IxMDhkYTE0IiwiZmlyc3ROYW1lIjoiUlVwZXNoMSIsImxhc3ROYW1lIjoic2hhcm1hIiwiZW1haWwiOiJydXBlc2hrdW1hcnM5NSszQGdtYWlsLmNvbSIsImNvbXBhbnlOYW1lIjoidGVjZ2Vub21lMyIsImxpY2Vuc2VTdGFydERhdGUiOiIyMDE4LTEyLTA3VDA3OjE3OjE3LjAwMFoiLCJsaWNlbnNlRW5kRGF0ZSI6IjIwMTgtMTItMDdUMDc6MTc6MTcuMDAwWiIsInBhc3N3b3JkIjoiJDJiJDEwJC5VLzNDQlVab1dqZlRENXJGQVBZTk9tUnBIZkoweGFrZTlCOGxycnRNeDZoZHB6N3BGL2JxIiwicGhvbmUiOjgwMDkxMzg4MjEsInJvbGUiOjIsInVwZGF0ZWRBdCI6IjIwMTktMDEtMjBUMTk6MDI6MTYuMDExWiIsImlzX2FjdGl2YXRlZCI6MiwiY3JlYXRlZEF0IjoiMjAxOS0wMS0yMFQxOTowMjoxNi4wMTFaIiwiX192IjowfX0.RB1kFMOrZDzKG7B247liWv2L8RZicg5Q51RVuDHP4R4",
+        "expiresIn": 3600,
+        "Users": {
+            "company_license": 2,
+            "_id": "5c44c5b8c1e1fe07b108da14",
+            "firstName": "RUpesh1",
+            "lastName": "sharma",
+            "email": "rupeshkumars95+3@gmail.com",
+            "companyName": "tecgenome3",
+            "licenseStartDate": "2018-12-07T07:17:17.000Z",
+            "licenseEndDate": "2018-12-07T07:17:17.000Z",
+            "password": "$2b$10$.U/3CBUZoWjfTD5rFAPYNOmRpHfJ0xake9B8lrrtMx6hdpz7pF/bq",
+            "phone": 8009138821,
+            "role": 2,
+            "updatedAt": "2019-01-20T19:02:16.011Z",
+            "is_activated": 2,
+            "createdAt": "2019-01-20T19:02:16.011Z",
+            "__v": 0
+        }
+    }
+}
+Failure Response
+1. 
+{
+    "status": false,
+    "message": "Something went wrong : SyntaxError: Unexpected token } in JSON at position 57",
+    "data": {}
+}
+
+
+2.
+{
+    "error": "phone must be unique"
+}
+3.
+{
+    "error": "email must be unique"
+}
+
+
+etc
+Description
+1.Have to create a registration form having first name, last
+name, email, company name, license start date and
+license end date.
+2. Name of company should be unique i.e. there cannot be
+two companies with the same name.
+3. While registration company license will be inactive.
+
+
+2.
+An API which when passed with company name will return
+“success” if company name exists and its license is active.
+If license is inactive or company is de-activated then it will
+return “false”
+
+URL
+http://localhost:3000/api/validate_company_name
+Method
+Post
+URL Params
+N/A
+Header for Authorization
+token
+Data Parms
+{
+"companyName":"tecgenome1"
+}
+Success Response
+{
+    "status": false
+}
+Failure Response
+{
+
+    "message": "Something went wrong "+err,
+
+}
+
+
+
+
+3. List of all companies will be displayed in Last Registered
+First Served.
+
+URL
+http://localhost:3000/api/list_of_users
+Method
+Post
+URL Params
+N/A
+Header for Authorization
+token
+Data Parms
+{
+
+}
+Success Response
+{
+    "Users": [
+        {
+            "company_license": 2,
+            "_id": "5c44c5b8c1e1fe07b108da14",
+            "firstName": "RUpesh1",
+            "lastName": "sharma",
+            "email": "rupeshkumars95+3@gmail.com",
+            "companyName": "tecgenome3",
+            "licenseStartDate": "2018-12-07T07:17:17.000Z",
+            "licenseEndDate": "2018-12-07T07:17:17.000Z",
+            "phone": 8009138821,
+            "role": 2,
+            "updatedAt": "2019-01-20T19:02:16.011Z",
+            "is_activated": 2
+        },
+        {
+            "company_license": 2,
+            "_id": "5c44c4fcc1e1fe07b108da11",
+            "firstName": "RUpesh1",
+            "lastName": "sharma",
+            "email": "rupeshkumars95+2@gmail.com",
+            "companyName": "tecgenome2",
+            "licenseStartDate": "2018-12-07T07:17:17.000Z",
+            "licenseEndDate": "2018-12-07T07:17:17.000Z",
+            "phone": 8009154821,
+            "role": 2,
+            "updatedAt": "2019-01-20T18:59:08.841Z",
+            "is_activated": 2
+        }
+    ]
+}
+Failure Response
+{
+
+    "message": "Something went wrong "+err,
+
+}
+
+
+
+
+
+4.Admin can edit the company and put in license start date
+and license end date and  Admin can also de-activate the company.
+
+URL
+http://localhost:3000/api/list_of_users
+Method
+Post
+Header for Authorization
+token
+URL Params
+N/A
+Data Parms
+{
+	"id":1
+                   “ cname”:”abc”,
+                    "licenseStartDate": "2018-12-07 12:47:17",
+  "licenseEndDate":"2018-12-07 12:47:17",
+“company_license”:1 or 2
+}
+Success Response
+{
+    "Users": [
+        {
+            "company_license": 2,
+            "_id": "5c44c5b8c1e1fe07b108da14",
+            "firstName": "RUpesh1",
+            "lastName": "sharma",
+            "email": "rupeshkumars95+3@gmail.com",
+            "companyName": "tecgenome3",
+            "licenseStartDate": "2018-12-07T07:17:17.000Z",
+            "licenseEndDate": "2018-12-07T07:17:17.000Z",
+            "phone": 8009138821,
+            "role": 2,
+            "updatedAt": "2019-01-20T19:02:16.011Z",
+            "is_activated": 2
+        },
+        {
+            "company_license": 2,
+            "_id": "5c44c4fcc1e1fe07b108da11",
+            "firstName": "RUpesh1",
+            "lastName": "sharma",
+            "email": "rupeshkumars95+2@gmail.com",
+            "companyName": "tecgenome2",
+            "licenseStartDate": "2018-12-07T07:17:17.000Z",
+            "licenseEndDate": "2018-12-07T07:17:17.000Z",
+            "phone": 8009154821,
+            "role": 2,
+            "updatedAt": "2019-01-20T18:59:08.841Z",
+            "is_activated": 2
+        }
+    ]
+}
+Failure Response
+{
+
+    "message": "Something went wrong "+err,
+
+}
+
+Description
+1. Admin can edit the company and put in license start date
+and license end date.
+2. Admin can also de-activate the company.
+
+
+
+
+
+
+
+
+
+
+
+
+
+5. Login API for Booth admin and Company
+
+URL
+http://localhost:3000/api/post_login
+Method
+Post
+URL Params
+N/A
+Data Parms
+{
+	"email":"rupeshkumars95+1@gmail.com",
+	"password":"65465dlkjndjknkdn"
+}
+Success Response
+{
+    "data": {
+        "token": "Jloyds eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmVzSW4iOjE1NDgwMTA5MDIxMjQsIlVzZXJzIjp7ImNvbXBhbnlfbGljZW5zZSI6MiwiX2lkIjoiNWM0NGM1NGNjMWUxZmUwN2IxMDhkYTEzIiwiZmlyc3ROYW1lIjoiUlVwZXNoMSIsImxhc3ROYW1lIjoic2hhcm1hIiwiZW1haWwiOiJydXBlc2hrdW1hcnM5NSsxQGdtYWlsLmNvbSIsImNvbXBhbnlOYW1lIjoidGVjZ2Vub21lMSIsImxpY2Vuc2VTdGFydERhdGUiOiIyMDE4LTEyLTA3VDA3OjE3OjE3LjAwMFoiLCJsaWNlbnNlRW5kRGF0ZSI6IjIwMTgtMTItMDdUMDc6MTc6MTcuMDAwWiIsInBhc3N3b3JkIjoiJDJiJDEwJGU0SjJ6cnhKOUJSQ01Icnllc1R2bXVjZkQzSXBYZnJUelRrMGhpOXJWektFUlpXY1N4U0ZxIiwicGhvbmUiOjgwMDkxNTg4MjEsInJvbGUiOjEsInVwZGF0ZWRBdCI6IjIwMTktMDEtMjBUMTk6MDA6MjguOTk2WiIsImlzX2FjdGl2YXRlZCI6MSwiY3JlYXRlZEF0IjoiMjAxOS0wMS0yMFQxOTowMDoyOC45OTZaIiwiX192IjowfX0.0IF7cQ27eaYnBWy66r2SC-uSWpy6GazElq0tXgICX1o",
+        "Users": {
+            "company_license": 2,
+            "_id": "5c44c54cc1e1fe07b108da13",
+            "firstName": "RUpesh1",
+            "lastName": "sharma",
+            "email": "rupeshkumars95+1@gmail.com",
+            "companyName": "tecgenome1",
+            "licenseStartDate": "2018-12-07T07:17:17.000Z",
+            "licenseEndDate": "2018-12-07T07:17:17.000Z",
+            "password": "$2b$10$e4J2zrxJ9BRCMHryesTvmucfD3IpXfrTzTk0hi9rVzKERZWcSxSFq",
+            "phone": 8009158821,
+            "role": 1,
+            "updatedAt": "2019-01-20T19:00:28.996Z",
+            "is_activated": 1,
+            "createdAt": "2019-01-20T19:00:28.996Z",
+            "__v": 0
+        },
+        "expiresIn": 3600
+    }
+}
+Failure Response
+{
+
+    "message": "Something went wrong "+err,
+
+}
+
+
+
